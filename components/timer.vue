@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   computed: {
     timer () {
@@ -23,15 +25,11 @@ export default {
     }
   },
   methods: {
-    startTimer () {
-      this.$store.dispatch('START_TIMER')
-    },
-    pauseTimer () {
-      this.$store.dispatch('PAUSE_TIMER')
-    },
-    stopTimer () {
-      this.$store.dispatch('STOP_TIMER')
-    }
+    ...mapActions({
+      startTimer: 'START_TIMER',
+      pauseTimer: 'PAUSE_TIMER',
+      stopTimer: 'STOP_TIMER'
+    })
   }
 }
 </script>

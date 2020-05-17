@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data: function () {
     return {
@@ -52,6 +54,11 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      addTask: 'ADD_TASK',
+      startTimer: 'START_TIMER',
+      removeTask: 'REMOVE_TASK'
+    }),
     pomAdding () {
       this.pomAdd = 'add'
       this.$store.dispatch('TASK_COUNTER', this.pomAdd)
@@ -59,15 +66,6 @@ export default {
     pomRemoving () {
       this.pomAdd = 'remove'
       this.$store.dispatch('TASK_COUNTER', this.pomAdd)
-    },
-    addTask () {
-      this.$store.dispatch('ADD_TASK')
-    },
-    startTimer () {
-      this.$store.dispatch('START_TIMER')
-    },
-    removeTask (task) {
-      this.$store.dispatch('REMOVE_TASK', task)
     },
   addPom (taskId) {
     this.pomAdd = 'add'
